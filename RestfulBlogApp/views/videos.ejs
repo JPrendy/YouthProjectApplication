@@ -1,1 +1,15 @@
 <% include ./partials/header %>
+
+<div class="col-sm-12">
+    <%  result.forEach(function(result){  %>
+    <div class="story">
+    <h1 class=""><%= result.videotitle %></h1>
+    <p><%= result.videolink  %></p>
+
+    
+</div>
+    <% }) %>
+<button type="button" class="btn btn-primary" id="nextPage">Next Page</button>
+</div>
+
+<% include ./partials/footer %>

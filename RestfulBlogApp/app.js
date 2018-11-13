@@ -28,7 +28,14 @@ app.get("/news", function(req, res){
 })
 
 app.get("/videos", function(req, res){
-  res.render("videos");
+  con.query("SELECT * FROM videos ORDER BY videoid desc", function (err, result, fields) {
+    console.log(result[2]);
+
+     //res.render("index", {result: result[0].uid});
+     //res.send("result");
+     res.render("videos",  {result: result} );
+
+  })
 })
 
 app.get("/volunteers", function(req, res){
