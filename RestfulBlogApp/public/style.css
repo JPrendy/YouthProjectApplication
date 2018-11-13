@@ -1,0 +1,80 @@
+body{
+    min-height: 500px;
+}
+
+.newsTitle{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.story{
+    border-bottom: 1px solid #f1f1f1;;
+}
+
+.newsImage{
+    height: 300px;
+    width: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+
+.newsDate{
+    text-align: right;
+    color: blue;
+}
+
+footer{
+    background-color: #212529;
+    color:white;   
+    text-align: center;
+    height: 60px;
+    margin-top: 50px;
+}
+
+.container{
+    margin-top: 50px;
+}
+
+.btn-btn-primary{
+  text-align: right;
+}
+
+
+
+.card{
+    margin: 10px;
+}
+
+.indexImage{
+    width:200px; 
+    height: 200px;
+    float: left;
+    margin-right: 50px;
+}
+
+.cbIndex{
+  float: left;
+}
+
+.card-title{
+    text-align: center;
+}
+
+.card-text{
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.headerBlog{
+    text-align: center;
+}
+
+
+
+.imageCenter{
+    margin: 0 auto;
+    width:400px;
+    height:400px;
+}

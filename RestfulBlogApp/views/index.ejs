@@ -1,0 +1,27 @@
+<% include ./partials/header %>
+<div class="col-sm-3">
+        <h2>Twitter Timeline</h2>
+                <a class="twitter-timeline" href="https://twitter.com/ywirl" data-height="1000"  data-theme="dark">Tweets by Youth Work Ireland</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+<div class="col-sm-9">
+        <%  result.forEach(function(result){  %>
+        <div class="story">
+        <h1 class="newsTitle"><%= result.title %></h1>
+        <p  class="newsDate"><%= result.date.toLocaleString() %></p>
+        <p><%= result.content  %></p>
+
+        
+        <% if (result.image == "") { %>
+        <% }else{ %> 
+        <img class="newsImage" src="/images/<%= result.image %>">
+        <% } %>
+    </div>
+        <% }) %>
+    <button type="button" class="btn btn-primary" id="nextPage">Next Page</button>
+</div>
+
+
+
+
+
+<% include ./partials/footer %>
