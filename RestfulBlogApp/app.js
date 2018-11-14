@@ -8,28 +8,30 @@ app.use(express.static("public")); //this allows access to the public directory
 
 
 app.get("/", function(req, res){
-  con.query("SELECT * FROM news ORDER BY newsid desc", function (err, result, fields) {
-    console.log(result[2]);
-
-     //res.render("index", {result: result[0].uid});
-     //res.send("result");
-     res.render("index",  {result: result} );
-
-  })
- 
+  res.render("index"); 
 })
+
+
+ 
  
 app.get("/staff", function(req, res){
   res.render("staff");
 })
 
-app.get("/news", function(req, res){
-  res.render("news");
+app.get("/news/1", function(req, res){
+  con.query("SELECT * FROM news ORDER BY newsid desc LIMIT 5", function (err, result, fields) {
+    //console.log(result[2]);
+
+     //res.render("index", {result: result[0].uid});
+     //res.send("result");
+     res.render("news",  {result: result} );
+
+  })
 })
 
 app.get("/videos", function(req, res){
   con.query("SELECT * FROM videos ORDER BY videoid desc", function (err, result, fields) {
-    console.log(result[2]);
+    // console.log(result[2]);
 
      //res.render("index", {result: result[0].uid});
      //res.send("result");
@@ -46,6 +48,17 @@ app.get("/contacts", function(req, res){
   res.render("contacts");
 })
 
+//GET BACK TO ATER.
+app.get("/news/:id", function(req, res){
+  con.query("SELECT * FROM news ORDER BY newsid desc LIMIT 5 OFFSET", function (err, result, fields) {
+    //console.log(result[2]);
+
+     //res.render("index", {result: result[0].uid});
+     //res.send("result");
+     res.render("news",  {result: result} );
+
+  }) 
+})
 
 
 
@@ -66,7 +79,6 @@ var con = mysql.createConnection({
   user: "root",
   database: "schooldatabase"
 });
-
 
 
 
