@@ -6,13 +6,21 @@ app.use(express.static("public")); //this allows access to the public directory
 // remember to install ejs, mysql and express
 
 
+//This accesses all calls
+app.all('*', function (req, res, next) {
+  console.log('Accessing the secret section ...')
+  next() // pass control to the next handler
+});
 
 app.get("/", function(req, res){
   res.render("index"); 
 })
 
+app.get("./partials/header", function(req, res){
+  console.log("hello");
+})
 
- 
+
  
 app.get("/staff", function(req, res){
   res.render("staff");

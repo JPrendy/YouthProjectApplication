@@ -1,1 +1,32 @@
 <% include ./partials/header %>
+
+<h1>Google Map with API</h1>
+
+<div id="googleMap" style="width:100%;height:400px;"></div>
+
+<script>
+function myMap() {
+
+
+ var uluru = {lat: 53.395962, lng: -6.21753};
+var map=new google.maps.Map(document.getElementById("googleMap"), {zoom: 16, center: uluru});
+var marker = new google.maps.Marker({position: uluru, map: map});
+}
+</script>
+
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9516.336235633276!2d-6.2233275!3d53.3954362!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5d1fa13b87d62605!2sKilmore+West+Community+Centre!5e0!3m2!1sen!2sie!4v1542204792536" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+<a href="mailto:louisesmith.kwyp@gmail.com">louisesmith.kwyp@gmail.com</a>
+
+Opening Hours:
+
+<p>Monday: 10am-10pm </p>
+<p>Tuesday: 10am-7pm </p>
+<p>Wednesday: 10am-10pm </p>
+<p>Thursday: 11am-10pm </p>
+<p>Friday: 10am-6pm</p>
+Occasional Weekends
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaFQqDqjYGAGB6SUYQ6DU8rbknl8BZIuY&callback=myMap"></script>
