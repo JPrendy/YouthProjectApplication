@@ -1,5 +1,9 @@
 
         <% include ./partials/header %>
+        <%  result2.forEach(function(result2){  %>
+        <h1><%= result2.notificationmessage %> </h1>
+        <% }) %>
+
         <div class="col-sm-3">
                 <h2>Twitter Timeline</h2>
                         <a class="twitter-timeline" href="https://twitter.com/ywirl" data-height="1000"  data-theme="dark">Tweets by Youth Work Ireland</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>

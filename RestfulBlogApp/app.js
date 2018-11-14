@@ -6,19 +6,34 @@ app.use(express.static("public")); //this allows access to the public directory
 // remember to install ejs, mysql and express
 
 
+// console.log(test);
 //This accesses all calls
-app.all('*', function (req, res, next) {
-  console.log('Accessing the secret section ...')
-  next() // pass control to the next handler
-});
+// app.all('*', function (req, res, next) {
+//   console.log('Accessing the secret section ...')
+//   next() // pass control to the next handler
+//   con.query("SELECT * FROM notification ", function (err, result, fields) {
+//     //console.log(result[2]);
+
+//      //res.render("index", {result: result[0].uid});
+//      //res.send("result");
+//      //res.send("result");
+
+//   })
+// });
+// import data from './data/artists.json'
+
+// app.get("/data", function(req, res){
+//   res.render("index", data.artist[0]); 
+// })
+
 
 app.get("/", function(req, res){
   res.render("index"); 
 })
 
-app.get("./partials/header", function(req, res){
-  console.log("hello");
-})
+// app.get("./partials/header", function(req, res){
+//   console.log("hello");
+// })
 
 
  
@@ -28,14 +43,13 @@ app.get("/staff", function(req, res){
 
 app.get("/news/1", function(req, res){
   con.query("SELECT * FROM news ORDER BY newsid desc LIMIT 5", function (err, result, fields) {
-    //console.log(result[2]);
-
-     //res.render("index", {result: result[0].uid});
-     //res.send("result");
-     res.render("news",  {result: result} );
-
+    con.query("SELECT * FROM notification" , function (err, result2, fields) {
+     res.render("news",  {result: result, result2: result2} );
+    })
   })
 })
+
+
 
 app.get("/videos", function(req, res){
   con.query("SELECT * FROM videos ORDER BY videoid desc", function (err, result, fields) {
@@ -94,3 +108,14 @@ var con = mysql.createConnection({
 
 
 
+// con.connect(function(err) {
+//   if (err) throw err;
+//   console.log("Connected!");
+// });
+
+var test = con.query("SELECT * FROM notification" , function (err, result, fields) {
+  console.log(result[0].notificationmessage);
+  //return result[0];
+
+})
+//console.log(test);
