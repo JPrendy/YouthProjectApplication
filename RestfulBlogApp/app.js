@@ -50,7 +50,11 @@ app.get("/contacts", function(req, res){
 
 //GET BACK TO ATER.
 app.get("/news/:id", function(req, res){
-  con.query("SELECT * FROM news ORDER BY newsid desc LIMIT 5 OFFSET", function (err, result, fields) {
+  console.log(req.params.id);
+  var firstboundary = 5 * (req.params.id - 1);
+  console.log(firstboundary);
+  var lastboundary  = 5 * req.params.id;
+  con.query("SELECT * FROM news ORDER BY newsid desc LIMIT " + firstboundary + " , " + lastboundary, function (err, result, fields) {
     //console.log(result[2]);
 
      //res.render("index", {result: result[0].uid});
