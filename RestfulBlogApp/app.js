@@ -1,6 +1,8 @@
 // Link for multiple sql statements renders
 //https://stackoverflow.com/questions/17100682/how-to-render-multiple-result-from-mysql-query-on-the-same-ejs-file-on-node-js
 
+// To read how to use data from a json file
+//https://www.youtube.com/watch?v=XUei_wA_8m0
 
 var express = require("express");
 var app = express();
@@ -24,7 +26,7 @@ app.use(express.static("public")); //this allows access to the public directory
 
 //   })
 // });
-// import data from './data/artists.json'
+// 
 
 // app.get("/data", function(req, res){
 //   res.render("index", data.artist[0]); 
@@ -107,6 +109,26 @@ app.get("/contacts", function(req, res){
   res.render("contacts",  {result2: result2});
 })
 })
+
+// Testing JSON Data
+////////////////////
+/////////////////////
+ //import data from './data/artists.json'
+var fs = require('fs');
+var content = fs.readFileSync('./data/artists.json', 'utf8');
+console.log(content);
+// const data = require('../data/artists.json');
+app.get('/json', (req, res) => {
+  //res.render('json', data.first_name[0])
+})
+// console.log(data);
+// app.get("/json", function(req, res){
+//   con.query("SELECT * FROM notification" , function (err, result2, fields) {
+//   res.render("json", {result2: result2, data: data});
+//   })
+// })
+////////////////////
+/////////////////////
 
 const port = process.env.PORT || 3000;
 app.listen(port, function(){
