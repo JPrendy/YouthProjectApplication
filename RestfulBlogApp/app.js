@@ -60,7 +60,7 @@ app.get("/test", function(req, res){
 app.get("/news/1", function(req, res){
   con.query("SELECT * FROM news ORDER BY newsid desc LIMIT 5", function (err, result, fields) {
     con.query("SELECT * FROM notification" , function (err, result2, fields) {
-     res.render("news",  {result: result,  result2: result2} );
+     res.render("news",  {result: result,  result2: result2, totalNews: "ELSE"} );
   })
 })
 })
@@ -74,17 +74,11 @@ app.get("/news/:id", function(req, res){
   con.query("SELECT * FROM news ORDER BY newsid desc LIMIT " + firstboundary + " , " + lastboundary, function (err, result, fields) {
     con.query("SELECT * FROM notification" , function (err, result2, fields) {
       con.query("SELECT COUNT(newsid) as Test FROM news" , function (err, result3, fields) {
-        if(result3[0].Test > firstboundary ){
-            //console.log(typeof(result2[]))
+        if(result3[0].Test >= lastboundary ){
             res.render("news",  {result: result, result2: result2,  totalNews: "True"} );
         }else{
              res.render("news",  {result: result, result2: result2,  totalNews: "False"} );
  
-        }
-        if(5 > 4){
-          console.log(20);
-        }else{
-          console.log(15);
         }
     }) 
   }) 
