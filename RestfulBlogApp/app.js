@@ -2,7 +2,7 @@
 //https://stackoverflow.com/questions/17100682/how-to-render-multiple-result-from-mysql-query-on-the-same-ejs-file-on-node-js
 
 // To read how to use data from a json file
-//https://www.youtube.com/watch?v=XUei_wA_8m0
+//https://stackabuse.com/reading-and-writing-json-files-with-node-js/
 
 var express = require("express");
 var app = express();
@@ -115,11 +115,16 @@ app.get("/contacts", function(req, res){
 /////////////////////
  //import data from './data/artists.json'
 var fs = require('fs');
-var content = fs.readFileSync('./data/artists.json', 'utf8');
-console.log(content);
+fs.readFile('./data/artists.json', (err, data) => {  
+  if (err) throw err;
+  let student = JSON.parse(data);
+  console.log(student[0].first_name);
+});
 // const data = require('../data/artists.json');
 app.get('/json', (req, res) => {
-  //res.render('json', data.first_name[0])
+  // var data = fs.readFileSync('./data/artists.json', 'utf8');
+  // console.log(data[5]);
+  //  res.render('json', {data: data})
 })
 // console.log(data);
 // app.get("/json", function(req, res){
