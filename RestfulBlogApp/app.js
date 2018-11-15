@@ -1,3 +1,7 @@
+// Link for multiple sql statements renders
+//https://stackoverflow.com/questions/17100682/how-to-render-multiple-result-from-mysql-query-on-the-same-ejs-file-on-node-js
+
+
 var express = require("express");
 var app = express();
 app.set("view engine", "ejs");  //allows the need not to set .ejs at the end of the file.
@@ -33,11 +37,6 @@ app.get("/", function(req, res){
 })
 })
 
-// app.get("./partials/header", function(req, res){
-//   console.log("hello");
-// })
-
-
  
 app.get("/staff", function(req, res){
   con.query("SELECT * FROM notification" , function (err, result2, fields) {
@@ -45,13 +44,18 @@ app.get("/staff", function(req, res){
 })
 })
 
+///
+///
 app.get("/test", function(req, res){
-  con.query("SELECT * FROM news ORDER BY newsid desc LIMIT 5", function (err, result, fields) {
-    con.query("SELECT * FROM notification" , function (err, result2, fields) {
-     res.render("test",  {result: result , result2: result2} );
+  // con.query("SELECT * FROM news ORDER BY newsid desc LIMIT 5", function (err, result, fields) {
+    con.query("SELECT COUNT(newsid) as Test FROM news" , function (err, result2, fields) {
+    //  res.render("test",  {result: result , result2: result2} );
+    console.log(result2[0].Test);
     })
-  })
 })
+////
+////
+
 
 app.get("/news/1", function(req, res){
   con.query("SELECT * FROM news ORDER BY newsid desc LIMIT 5", function (err, result, fields) {
@@ -59,6 +63,32 @@ app.get("/news/1", function(req, res){
      res.render("news",  {result: result,  result2: result2} );
   })
 })
+})
+
+//GET BACK TO ATER.
+app.get("/news/:id", function(req, res){
+  console.log(req.params.id);
+  var firstboundary = 5 * (req.params.id - 1);
+  console.log(firstboundary);
+  var lastboundary  = 5 * req.params.id;
+  con.query("SELECT * FROM news ORDER BY newsid desc LIMIT " + firstboundary + " , " + lastboundary, function (err, result, fields) {
+    con.query("SELECT * FROM notification" , function (err, result2, fields) {
+      con.query("SELECT COUNT(newsid) as Test FROM news" , function (err, result3, fields) {
+        if(result3[0].Test > firstboundary ){
+            //console.log(typeof(result2[]))
+            res.render("news",  {result: result, result2: result2,  totalNews: "True"} );
+        }else{
+             res.render("news",  {result: result, result2: result2,  totalNews: "False"} );
+ 
+        }
+        if(5 > 4){
+          console.log(20);
+        }else{
+          console.log(15);
+        }
+    }) 
+  }) 
+  }) 
 })
 
 
@@ -84,25 +114,6 @@ app.get("/contacts", function(req, res){
 })
 })
 
-//GET BACK TO ATER.
-app.get("/news/:id", function(req, res){
-  console.log(req.params.id);
-  var firstboundary = 5 * (req.params.id - 1);
-  console.log(firstboundary);
-  var lastboundary  = 5 * req.params.id;
-  con.query("SELECT * FROM news ORDER BY newsid desc LIMIT " + firstboundary + " , " + lastboundary, function (err, result, fields) {
-    con.query("SELECT * FROM notification" , function (err, result2, fields) {
-     res.render("news",  {result: result, result2: result2} );
-    }) 
-  }) 
-})
-
-
-
-
-
-
-
 const port = process.env.PORT || 3000;
 app.listen(port, function(){
     console.log("server is running");
@@ -117,16 +128,3 @@ var con = mysql.createConnection({
   database: "schooldatabase"
 });
 
-
-
-// con.connect(function(err) {
-//   if (err) throw err;
-//   console.log("Connected!");
-// });
-
-var test = con.query("SELECT * FROM notification" , function (err, result, fields) {
-  console.log(result[0].notificationmessage);
-  //return result[0];
-
-})
-//console.log(test);
