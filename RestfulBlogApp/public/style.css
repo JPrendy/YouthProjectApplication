@@ -7,6 +7,13 @@ body{
     text-align: center;
 }
 
+.notificationTitle{
+    text-align: center;
+    background-color: red;
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .story{
     border-bottom: 1px solid #f1f1f1;;
 }

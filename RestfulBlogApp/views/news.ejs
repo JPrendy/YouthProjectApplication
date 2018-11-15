@@ -1,8 +1,7 @@
 
         <% include ./partials/header %>
-        <%  result2.forEach(function(result2){  %>
-        <h1><%= result2.notificationmessage %> </h1>
-        <% }) %>
+
+
 
         <div class="col-sm-3">
                 <h2>Twitter Timeline</h2>
@@ -22,6 +21,7 @@
                 <% } %>
             </div>
                 <% }) %>
+                <button type="button" class="btn btn-primary" id="previousPage">Previous Page</button>
             <button type="button" class="btn btn-primary" id="nextPage">Next Page</button>
         </div>
         

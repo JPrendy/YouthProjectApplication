@@ -28,7 +28,9 @@ app.use(express.static("public")); //this allows access to the public directory
 
 
 app.get("/", function(req, res){
-  res.render("index"); 
+  con.query("SELECT * FROM notification" , function (err, result2, fields) {
+  res.render("index", {result2: result2}); 
+})
 })
 
 // app.get("./partials/header", function(req, res){
@@ -38,36 +40,48 @@ app.get("/", function(req, res){
 
  
 app.get("/staff", function(req, res){
-  res.render("staff");
+  con.query("SELECT * FROM notification" , function (err, result2, fields) {
+  res.render("staff", {result2: result2});
+})
+})
+
+app.get("/test", function(req, res){
+  con.query("SELECT * FROM news ORDER BY newsid desc LIMIT 5", function (err, result, fields) {
+    con.query("SELECT * FROM notification" , function (err, result2, fields) {
+     res.render("test",  {result: result , result2: result2} );
+    })
+  })
 })
 
 app.get("/news/1", function(req, res){
   con.query("SELECT * FROM news ORDER BY newsid desc LIMIT 5", function (err, result, fields) {
     con.query("SELECT * FROM notification" , function (err, result2, fields) {
-     res.render("news",  {result: result, result2: result2} );
-    })
+     res.render("news",  {result: result,  result2: result2} );
   })
 })
+})
+
 
 
 
 app.get("/videos", function(req, res){
   con.query("SELECT * FROM videos ORDER BY videoid desc", function (err, result, fields) {
-    // console.log(result[2]);
-
-     //res.render("index", {result: result[0].uid});
-     //res.send("result");
-     res.render("videos",  {result: result} );
-
+    con.query("SELECT * FROM notification" , function (err, result2, fields) {
+     res.render("videos",  {result: result,  result2: result2} );
+    })
   })
 })
 
 app.get("/volunteers", function(req, res){
-  res.render("volunteers");
+  con.query("SELECT * FROM notification" , function (err, result2, fields) {
+  res.render("volunteers", {result2: result2});
+})
 })
 
 app.get("/contacts", function(req, res){
-  res.render("contacts");
+  con.query("SELECT * FROM notification" , function (err, result2, fields) {
+  res.render("contacts",  {result2: result2});
+})
 })
 
 //GET BACK TO ATER.
@@ -77,12 +91,9 @@ app.get("/news/:id", function(req, res){
   console.log(firstboundary);
   var lastboundary  = 5 * req.params.id;
   con.query("SELECT * FROM news ORDER BY newsid desc LIMIT " + firstboundary + " , " + lastboundary, function (err, result, fields) {
-    //console.log(result[2]);
-
-     //res.render("index", {result: result[0].uid});
-     //res.send("result");
-     res.render("news",  {result: result} );
-
+    con.query("SELECT * FROM notification" , function (err, result2, fields) {
+     res.render("news",  {result: result, result2: result2} );
+    }) 
   }) 
 })
 
