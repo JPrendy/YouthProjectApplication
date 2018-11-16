@@ -4,6 +4,18 @@
 // To read how to use data from a json file
 //https://stackabuse.com/reading-and-writing-json-files-with-node-js/
 
+//INSTALL THE FOLLOWING WHEN ADDING THE APPLICATION ONLINE.
+//apache
+//phpmyadmin
+//node
+//node install npm
+//npm install express --save
+//npm install ejs -- save
+//npm install mysql --save
+
+//To run the application type node app.js
+
+
 var express = require("express");
 var app = express();
 app.set("view engine", "ejs");  //allows the need not to set .ejs at the end of the file.
@@ -41,9 +53,11 @@ app.get("/", function(req, res){
 
  
 app.get("/staff", function(req, res){
+  con.query("SELECT * FROM staff", function (err, resp, fields) {
   con.query("SELECT * FROM notification" , function (err, result2, fields) {
-  res.render("staff", {result2: result2});
+  res.render("staff", {result: resp, result2: result2});
 })
+  })
 })
 
 ///
@@ -69,9 +83,9 @@ app.get("/news/1", function(req, res){
 
 //GET BACK TO ATER.
 app.get("/news/:id", function(req, res){
-  console.log(req.params.id);
+  //console.log(req.params.id);
   var firstboundary = 5 * (req.params.id - 1);
-  console.log(firstboundary);
+ // console.log(firstboundary);
   var lastboundary  = 5 * req.params.id;
   con.query("SELECT * FROM news ORDER BY newsid desc LIMIT " + firstboundary + " , " + lastboundary, function (err, result, fields) {
     con.query("SELECT * FROM notification" , function (err, result2, fields) {
@@ -83,6 +97,16 @@ app.get("/news/:id", function(req, res){
  
         }
     }) 
+  }) 
+  }) 
+})
+
+
+//Read more about a specific newstitle
+app.get("/news/readmore/:id", function(req, res){
+  con.query("SELECT * FROM news ORDER where newsid", function (err, result, fields) {
+    con.query("SELECT * FROM notification" , function (err, result2, fields) {
+            res.render("show",  {result: result, result2: result2} );
   }) 
   }) 
 })
@@ -113,27 +137,36 @@ app.get("/contacts", function(req, res){
 // Testing JSON Data
 ////////////////////
 /////////////////////
- //import data from './data/artists.json'
 var fs = require('fs');
-fs.readFile('./data/artists.json', (err, data) => {  
-  if (err) throw err;
-  let student = JSON.parse(data);
-  console.log(student[0].first_name);
-});
-// const data = require('../data/artists.json');
+
 app.get('/json', (req, res) => {
-  // var data = fs.readFileSync('./data/artists.json', 'utf8');
-  // console.log(data[5]);
-  //  res.render('json', {data: data})
+  con.query("SELECT * FROM notification" , function (err, result2, fields) {
+
+  fs.readFile('./data/artists.json', (err, data2) => {  
+    if (err) throw err;
+    let data = JSON.parse(data2);
+    // console.log(student[0].first_name);
+
+    res.render('json', {data: data, result2: result2})
+  });
 })
-// console.log(data);
-// app.get("/json", function(req, res){
-//   con.query("SELECT * FROM notification" , function (err, result2, fields) {
-//   res.render("json", {result2: result2, data: data});
-//   })
-// })
+})
 ////////////////////
 /////////////////////
+
+app.get("/events", (req, res) => {
+  con.query("SELECT * FROM notification" , function (err, result2, fields) {
+res.render("events", {result2:result2});
+  })
+})
+
+
+app.get("/feedback", (req, res) => {
+  con.query("SELECT * FROM notification" , function (err, result2, fields) {
+res.render("feedback", {result2:result2});
+  })
+})
+
 
 const port = process.env.PORT || 3000;
 app.listen(port, function(){

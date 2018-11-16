@@ -1,25 +1,19 @@
 <% include ./partials/header %>
+<div class="col-sm-2"></div>
 
-<h1>Google Map with API</h1>
+<div class="col-sm-8 contactsBody">
 
-<div id="googleMap" style="width:100%;height:400px;"></div>
-
-<script>
-function myMap() {
-
-
- var uluru = {lat: 53.395962, lng: -6.21753};
-var map=new google.maps.Map(document.getElementById("googleMap"), {zoom: 16, center: uluru});
-var marker = new google.maps.Marker({position: uluru, map: map});
-}
-</script>
+<h1>Google Maps</h1>
 
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9516.336235633276!2d-6.2233275!3d53.3954362!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5d1fa13b87d62605!2sKilmore+West+Community+Centre!5e0!3m2!1sen!2sie!4v1542204792536" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 
-<a href="mailto:louisesmith.kwyp@gmail.com">louisesmith.kwyp@gmail.com</a>
+<h2> Email Us </h2>
 
-Opening Hours:
+James P - <a href="mailto:jprendergastbusiness@gmail.com">jprendergastbusiness@gmail.com</a>
+
+
+<h2> Opening Hours: </h2>
 
 <p>Monday: 10am-10pm </p>
 <p>Tuesday: 10am-7pm </p>
@@ -29,3 +23,19 @@ Opening Hours:
 Occasional Weekends
 
 
+
+Mailing Address
+Kilmore West Youth Project CLG
+Recreation Centre,
+Cromcastle Road,
+Kilmore West,
+Dublin 5
+(01) 8474548
+Email: louisesmith.kwyp@gmail.com
+</div>
+
+
+<div class="col-sm-2"></div>
+
+
+<% include ./partials/footer %>

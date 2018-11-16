@@ -1,5 +1,12 @@
 
+        <% include ./partials/header %>
 
+        <div class="col-sm-12">
 <h1> JSON Data</h1>
+<div class="jsonData">
+<%  data.forEach(function(data){  %>
+    <p><%= data.first_name %></p>
 
-    <p><%= data[0].first_name %></p>
+<% }) %>
+</div> 
+</div>
