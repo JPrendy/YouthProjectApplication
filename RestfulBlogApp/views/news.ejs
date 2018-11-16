@@ -12,14 +12,15 @@
                 <div class="story">
                 <h1 class="newsTitle"><%= result.title %></h1>
                 <p  class="newsDate"><%= result.date.toLocaleString() %></p>
-                <p><%= result.content  %></p>
-                <button type="button" class="btn btn-primary">Read More</button>
+                <p><%= result.content.substring(0, 300)  %></p>
         
                 
                 <% if (result.image == "") { %>
                 <% }else{ %> 
                 <img class="newsImage" src="/images/<%= result.image %>">
                 <% } %>
+                <a href="/news/readmore/<%= result.newsid %>"><button type="button" class="btn btn-primary">Read More</button></a>
+
             </div>
                 <% }) %>
                 <% if (totalNews == "True" || totalNews == "False"){ %>

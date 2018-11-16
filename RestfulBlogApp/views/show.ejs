@@ -1,3 +1,20 @@
 <% include ./partials/header %>
 
-<h1> Read More </h1>
+<div class="col-sm-2"></div>
+<div class="col-sm-8">
+<div class="storyFull">
+    <h1 class="newsTitle"><%= result[0].title %></h1>
+    <p  class="newsDate"><%= result[0].date.toLocaleString() %></p>
+    <!-- This is really important to have to show the html tags in the mysql database -->
+    <p><%- result[0].content  %></p>
+
+    
+    <% if (result[0].image == "") { %>
+    <% }else{ %> 
+    <img class="newsImage" src="/images/<%= result[0].image %>">
+    <% } %>
+</div>
+</div>
+<div class="col-sm-2"></div>
+
+<% include ./partials/footer %>

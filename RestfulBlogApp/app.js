@@ -104,9 +104,11 @@ app.get("/news/:id", function(req, res){
 
 //Read more about a specific newstitle
 app.get("/news/readmore/:id", function(req, res){
-  con.query("SELECT * FROM news ORDER where newsid", function (err, result, fields) {
+  var newsid = req.params.id;
+  con.query("SELECT * FROM news where newsid=" + newsid, function (err, result, fields) {
     con.query("SELECT * FROM notification" , function (err, result2, fields) {
             res.render("show",  {result: result, result2: result2} );
+            console.log(result);
   }) 
   }) 
 })
