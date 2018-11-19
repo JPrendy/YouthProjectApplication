@@ -34,6 +34,10 @@ function previouspage(){
     location.href='http://localhost:3000/news/' + number;
 }
 
+
+//Fixed header example
+// https://www.w3schools.com/howto/howto_js_sticky_header.asp
+
 window.onscroll = function() {myFunction()};
 
 var header = document.getElementById("myHeader");
@@ -46,3 +50,17 @@ function myFunction() {
     header.classList.remove("sticky");
   }
 }
+
+
+
+// The guide how to do a fullscreen overlay
+// https://www.w3schools.com/howto/howto_js_fullscreen_overlay.asp
+
+myNav = document.getElementById("myNav")
+if(myNav !== null){
+    myNav.style.display = "block"; 
+}
+
+  function closeNav() {
+    document.getElementById("myNav").style.display = "none";
+  }

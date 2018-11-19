@@ -4,7 +4,7 @@
 
     <div class="videoStyle">
     <h1 class="videoTitle"><%= result.videotitle %></h1>
-    <video class="videofiles" controls>
+    <video class="videofiles" controls controlsList="nodownload">
         <source src="/videofiles/<%= result.videolink  %>" type="video/mp4">
         Your browser does not support the video tag.
       </video>

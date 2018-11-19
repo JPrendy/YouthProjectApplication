@@ -23,8 +23,10 @@ body{
 
 /* Work on this to work with the image card width */
 .card{
-    /* width: 400px; */
     text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .staffImage{}
@@ -55,9 +57,14 @@ body{
     height: 600px;
 }
 
+.carousel-caption{
+    background: #212529;
+}
+
 .readMore{
   float: right;
   margin-bottom: 10px;
+  margin-right: 5px;
 }
 
 .story{
@@ -159,9 +166,19 @@ footer{
     margin-bottom: 30px;
 }
 
+.carousel.slide{
+    display: block;
+    margin-left:auto;
+    margin-right: auto;
+}
+
 #volunteerHeaderContainer{
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.carouselHeader{
+    text-align: center;
 }
 
 /* This will used to have the header sticky */
@@ -174,5 +191,58 @@ footer{
   }
   
   .sticky + .content {
-    padding-top: 102px;
+    padding-top: 60px;
   }
+
+
+
+
+/* For overlay */
+
+  .overlay {
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #66ff66;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: black;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
