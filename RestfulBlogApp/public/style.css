@@ -51,8 +51,14 @@ body{
     height: 600px;
 }
 
+.readMore{
+  float: right;
+  margin-bottom: 10px;
+}
+
 .story{
-    border-bottom: 1px solid #f1f1f1;;
+    border-bottom: 1px solid #f1f1f1;
+    overflow: auto;
 }
 
 .jsonData{
@@ -60,8 +66,22 @@ body{
 }
 
 #nextPage{
+    margin: 20px;
     float: right;
 }
+
+#previousPage{
+    margin: 20px;
+}
+
+.staffHeader{
+    text-align: center;
+}
+
+.volunteerHeader{
+    text-align: center;
+}
+
 
 .videofiles{
     height: 300px;
