@@ -20,10 +20,14 @@ body{
     margin-right: auto;
 }
 
+
+/* Work on this to work with the image card width */
 .card{
-    width: 400px;
+    /* width: 400px; */
     text-align: center;
 }
+
+.staffImage{}
 
 .cardBody{
     display: block;
@@ -150,3 +154,25 @@ footer{
     width:400px;
     height:400px;
 }
+
+.indexHeader{
+    margin-bottom: 30px;
+}
+
+#volunteerHeaderContainer{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* This will used to have the header sticky */
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+  
+  .sticky + .content {
+    padding-top: 102px;
+  }

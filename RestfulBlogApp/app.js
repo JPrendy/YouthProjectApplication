@@ -54,8 +54,10 @@ app.get("/", function(req, res){
  
 app.get("/staff", function(req, res){
   con.query("SELECT * FROM staff", function (err, resp, fields) {
+    con.query("SELECT * FROM volunteer", function (err, resp2, fields) {
   con.query("SELECT * FROM notification" , function (err, result2, fields) {
-  res.render("staff", {result: resp, result2: result2});
+  res.render("staff", {result: resp, volunteer:resp2, result2: result2});
+})
 })
   })
 })
@@ -135,6 +137,14 @@ app.get("/contacts", function(req, res){
   res.render("contacts",  {result2: result2});
 })
 })
+
+app.get("/carousel", function(req, res){
+  con.query("SELECT * FROM notification" , function (err, result2, fields) {
+  res.render("carousel", {result2: result2}); 
+})
+})
+
+ 
 
 
 

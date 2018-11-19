@@ -6,7 +6,7 @@
 <div class="col-sm-6">
 <div class="cardBody"> 
 <div class="card">
-        <img class="card-img-top" src="/images/<%= result.staffImage %>" alt="Card image" style="width:100%">
+        <img class="card-img-top staffImage" src="/images/<%= result.staffImage %>" alt="Card image">
         <div class="card-body">
           <h4 class="card-title"><%= result.staffname %></h4>
           <p class="card-text"><%= result.stafftitle %></p>
@@ -15,41 +15,24 @@
 </div>
 </div>
 <% }) %>
-<div  class="col-sm-12">
+<div  class="col-sm-12" id="volunteerHeaderContainer">
 <h1 class="volunteerHeader">Volunteers</h1>
 </div>
-<!-- ////////////////////////////
-Bootstrap Carousel 
-/////////////////////////////////-->
-        <div id="demo" class="carousel slide" data-ride="carousel">
 
-                <!-- Indicators -->
-                <ul class="carousel-indicators">
-                  <li data-target="#demo" data-slide-to="0" class="active"></li>
-                  <li data-target="#demo" data-slide-to="1"></li>
-                  <li data-target="#demo" data-slide-to="2"></li>
-                </ul>
-                
-                <!-- The slideshow -->
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="/images/avatar.png" alt="Los Angeles" width="500" height="500">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="/images/avatarTwo.png" alt="Chicago" width="500" height="500">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="/images/avatar.png" alt="New York" width="500" height="500">
-                  </div>
-                </div>
-                
-                <!-- Left and right controls -->
-                <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                  <span class="carousel-control-prev-icon"></span>
-                </a>
-                <a class="carousel-control-next" href="#demo" data-slide="next">
-                  <span class="carousel-control-next-icon"></span>
-                </a>
-              </div>
+<%  volunteer.forEach(function(volunteer){  %>
+  <div class="col-sm-6">
+  <div class="cardBody"> 
+  <div class="card">
+          <img class="card-img-top staffImage" src="/images/<%= volunteer.volunteerImage %>" alt="Card image">
+          <div class="card-body">
+            <h4 class="card-title"><%= volunteer.volunteername %></h4>
+            <p class="card-text"><%= volunteer.volunteertitle %></p>
+  </div>
+  </div>
+  </div>
+  </div>
+  <% }) %>
+
+
 
         <% include ./partials/footer %>
